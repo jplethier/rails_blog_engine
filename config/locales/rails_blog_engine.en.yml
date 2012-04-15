@@ -4,12 +4,19 @@ en:
       title: "Blog"
   activerecord:
     attributes:
-      rails_blog_engine/comment:    
+      rails_blog_engine/blog_comment:    
         author_byline: "Your name"
         author_email: "Your email"
         author_url: "Your website"
         body: "Comment"
   helpers:
     submit:
-      comment:
+      blog_comment:
         create: "Post Comment"
+  blog_comments:
+    comment: "Comment"
+    comments: "Comments"
+    held_for_moderation: "Your comment has been held for moderation."
+    new_comment: "New Comment"
+  blog_post:
+    new_post: "New Post"

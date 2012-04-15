@@ -1,0 +1,10 @@
+- if can?(:update, blog_comment)
+  .blog_comment-tools
+    - if can?(:mark_as_ham, blog_comment) && blog_comment.can_mark_as_ham?
+      = link_to("Not Spam",
+                mark_as_ham_post_blog_comment_path(blog_comment.post, blog_comment),
+                :method => :post, :class => "btn")
+    - if can?(:mark_as_spam, blog_comment) && blog_comment.can_mark_as_spam?
+      = link_to("Spam",
+                mark_as_spam_post_blog_comment_path(blog_comment.post, blog_comment),
+                :method => :post, :class => "btn")

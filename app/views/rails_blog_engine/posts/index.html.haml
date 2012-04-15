@@ -10,7 +10,7 @@
 = blog_page do
   .rails_blog_engine_posts
     - if can?(:create, RailsBlogEngine::Post)
-      = link_to("New Post", new_post_path,
+      = link_to(I18n.t('blog_post.new_post', new_post_path,
                 :class => "new_post btn large primary")
 
     = render @posts

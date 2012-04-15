@@ -22,7 +22,7 @@ module RailsBlogEngine
 
     def can_read_blog
       can :read, RailsBlogEngine::Post
-      can [:read, :create], RailsBlogEngine::Comment
+      can [:read, :create], RailsBlogEngine::BlogComment
     end
 
     def can_manage_blog
@@ -30,7 +30,7 @@ module RailsBlogEngine
       alias_action :mark_as_ham, :to => :update
 
       can :manage, RailsBlogEngine::Post
-      can :update, RailsBlogEngine::Comment
+      can :update, RailsBlogEngine::BlogComment
     end
   end
 end

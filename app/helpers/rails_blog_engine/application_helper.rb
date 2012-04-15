@@ -22,17 +22,17 @@ module RailsBlogEngine
       blog_url + "posts.atom"
     end
 
-    # Get extra HTML classes for the specified comment.
-    def comment_classes(comment)
-      comment.state.sub(/\A(filtered|marked)_as_/, '')
+    # Get extra HTML classes for the specified blog_comment.
+    def blog_comment_classes(blog_comment)
+      blog_comment.state.sub(/\A(filtered|marked)_as_/, '')
     end
 
-    # Generate HTML describing the author of a comment.
-    def comment_author_html(comment)
-      if comment.author_url && !comment.author_url.blank?
-        link_to comment.author_byline, comment.author_url, :rel => "nofollow"
+    # Generate HTML describing the author of a blog_comment.
+    def blog_comment_author_html(blog_comment)
+      if blog_comment.author_url && !blog_comment.author_url.blank?
+        link_to blog_comment.author_byline, blog_comment.author_url, :rel => "nofollow"
       else
-        comment.author_byline
+        blog_comment.author_byline
       end
     end
 

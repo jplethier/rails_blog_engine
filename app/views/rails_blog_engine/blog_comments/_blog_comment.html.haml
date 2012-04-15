@@ -1,0 +1,11 @@
+.rails_blog_engine_blog_comment.show{:class => blog_comment_classes(blog_comment)}
+  = render(:partial => 'rails_blog_engine/blog_comments/tools',
+           :locals => { :blog_comment => blog_comment })
+  %h4.byline
+    %a{:name => "blog_comment-#{blog_comment.id}"}
+      = blog_comment_author_html(blog_comment)
+      said
+      %a{:class => "blog_comment-link", :href => "#blog_comment-#{blog_comment.id}"}= distance_of_time_in_words_to_now(blog_comment.created_at)
+      ago:
+  %div.rails_blog_engine_body
+    ~ markdown(blog_comment.body, :trusted? => blog_comment.author_can_post?)

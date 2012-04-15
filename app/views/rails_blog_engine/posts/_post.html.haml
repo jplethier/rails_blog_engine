@@ -12,9 +12,9 @@
   %div.rails_blog_engine_body~ markdown(post.body, :trusted? => true)
 
   - if current_page?(post_permalink_path(post))
-    = render(:partial => 'rails_blog_engine/posts/comments_section',
-             :locals => { :post => post, :comments => @comments,
-                          :comment => @comment })
+    = render(:partial => 'rails_blog_engine/posts/blog_comments_section',
+             :locals => { :post => post, :blog_comments => @blog_comments,
+                          :blog_comment => @blog_comment })
   - else
     %p.links
-      = link_to_comments_section(post)
+      = link_to_blog_comments_section(post)

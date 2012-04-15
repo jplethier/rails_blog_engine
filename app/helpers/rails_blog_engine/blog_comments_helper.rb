@@ -1,4 +1,4 @@
 module RailsBlogEngine
-  module CommentsHelper
+  module BlogCommentsHelper
   end
 end

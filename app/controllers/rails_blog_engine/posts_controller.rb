@@ -27,8 +27,8 @@ module RailsBlogEngine
     end
 
     def show
-      @comments = comments_to_display.order(:created_at)
-      @comment = Comment.new {|c| c.post = @post }
+      @blog_comments = blog_comments_to_display.order(:created_at)
+      @blog_comment = BlogComment.new {|c| c.post = @post }
     end
 
     def edit
@@ -56,11 +56,11 @@ module RailsBlogEngine
                          :permalink => params[:permalink]).first!
     end
 
-    def comments_to_display
-      if can?(:update, RailsBlogEngine::Comment)
-        @post.comments
+    def blog_comments_to_display
+      if can?(:update, RailsBlogEngine::BlogComment)
+        @post.blog_comments
       else
-        @post.comments.visible
+        @post.blog_comments.visible
       end
     end
   end

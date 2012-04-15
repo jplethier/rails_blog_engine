@@ -1,0 +1,6 @@
+- content_for :title do
+  = t('blog_comments.new_comment')
+
+%h1= t('blog_comments.new_comment')
+
+= render :partial => 'form', :locals => { :blog_comment => @blog_comment }

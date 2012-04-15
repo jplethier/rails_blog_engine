@@ -14,7 +14,7 @@ RailsBlogEngine::Engine.routes.draw do
 
   # A regular resource interface for everything else.
   resources :posts, :except => [:index, :show, :delete] do
-    resources :comments, :only => [:create] do
+    resources :blog_comments, :only => [:create] do
       member do
         post :mark_as_ham
         post :mark_as_spam

@@ -1,12 +1,12 @@
 module RailsBlogEngine
-  class CommentsController < RailsBlogEngine::ApplicationController
+  class BlogCommentsController < RailsBlogEngine::ApplicationController
     before_filter :load_post
 
-    load_and_authorize_resource :class => "RailsBlogEngine::Comment"
+    load_and_authorize_resource :class => "RailsBlogEngine::BlogComment"
     skip_load_resource :create
 
     def create
-      @comment = @post.comments.create(params[:comment]) do |c|
+      @blog_comment = @post.blog_comments.create(params[:blog_comment]) do |c|
         # Record some extra information from our environment.  Most of this
         # is used by the spam filter.
         c.author_ip = request.remote_ip
@@ -15,13 +15,13 @@ module RailsBlogEngine
         c.referrer = request.env['HTTP_REFERER']
       end
 
-      if @comment.valid?
-        @comment.run_spam_filter
-        if @comment.filtered_as_spam?
-          flash[:comment_notice] = "Your comment has been held for moderation."
+      if @blog_comment.valid?
+        @blog_comment.run_spam_filter
+        if @blog_comment.filtered_as_spam?
+          flash[:comment_notice] = I18n.t('blog_comments.held_for_moderation')
           redirect_to(post_permalink_path(@post) + '#comment-flash')
         else
-          redirect_to(post_permalink_path(@post) + "#comment-#{@comment.id}")
+          redirect_to(post_permalink_path(@post) + "#comment-#{@blog_comment.id}")
         end
       else
         render "new"
@@ -29,13 +29,13 @@ module RailsBlogEngine
     end
 
     def mark_as_spam
-      @comment.mark_as_spam!
-      redirect_to(post_permalink_path(@post) + "#comment-#{@comment.id}")
+      @blog_comment.mark_as_spam!
+      redirect_to(post_permalink_path(@post) + "#comment-#{@blog_comment.id}")
     end
 
     def mark_as_ham
-      @comment.mark_as_ham!
-      redirect_to(post_permalink_path(@post) + "#comment-#{@comment.id}")
+      @blog_comment.mark_as_ham!
+      redirect_to(post_permalink_path(@post) + "#comment-#{@blog_comment.id}")
     end
 
     protected

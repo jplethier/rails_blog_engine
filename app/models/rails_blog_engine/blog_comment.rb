@@ -1,5 +1,5 @@
 module RailsBlogEngine
-  class Comment < ActiveRecord::Base
+  class BlogComment < ActiveRecord::Base
     # Define the functions spam?, spam!, and ham!.
     include Rakismet::Model
 
@@ -8,7 +8,7 @@ module RailsBlogEngine
     validates :author_byline, :presence => true
     validates :body, :presence => true
 
-    # Comments that are visible to the public.
+    # BlogComments that are visible to the public.
     scope(:visible,
           where(:state => ['unfiltered', 'filtered_as_ham', 'marked_as_ham']))
 
@@ -51,7 +51,7 @@ module RailsBlogEngine
       after_transition any => :marked_as_spam, :do => :train_as_spam
     end
 
-    # Run the spam filter on this comment and update it appropriately.
+    # Run the spam filter on this blog_comment and update it appropriately.
     def run_spam_filter
       return unless Rakismet.key
       if spam?

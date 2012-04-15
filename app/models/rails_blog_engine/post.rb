@@ -1,7 +1,7 @@
 module RailsBlogEngine
   class Post < ActiveRecord::Base
     belongs_to :author, :polymorphic => true
-    has_many :comments, :class_name => 'RailsBlogEngine::Comment'
+    has_many :blog_comments, :class_name => 'RailsBlogEngine::BlogComment'
 
     validates :title, :presence => true
     validates :body, :presence => true

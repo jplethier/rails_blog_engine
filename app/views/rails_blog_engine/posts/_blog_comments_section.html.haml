@@ -1,0 +1,12 @@
+%h3.blog_comments
+  %a(name="blog_comments")
+  	= t('blog_comments.comments')
+
+= render @blog_comments
+
+- if flash[:blog_comment_notice]
+  %p.flash.notice
+    %a(name="blog_comment-flash")= flash[:blog_comment_notice]
+
+= render(:partial => 'rails_blog_engine/blog_comments/form',
+         :locals => { :blog_comment => @blog_comment })

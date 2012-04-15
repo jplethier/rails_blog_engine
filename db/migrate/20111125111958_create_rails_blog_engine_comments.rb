@@ -1,6 +1,6 @@
-class CreateRailsBlogEngineComments < ActiveRecord::Migration
+class CreateRailsBlogEngineBlogComments < ActiveRecord::Migration
   def change
-    create_table :rails_blog_engine_comments do |t|
+    create_table :rails_blog_engine_blog_comments do |t|
       t.references :post
       t.string :author_byline
       t.string :author_email
@@ -15,7 +15,7 @@ class CreateRailsBlogEngineComments < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :rails_blog_engine_comments, :post_id
-    add_index :rails_blog_engine_comments, :author_email
+    add_index :rails_blog_engine_blog_comments, :post_id
+    add_index :rails_blog_engine_blog_comments, :author_email
   end
 end

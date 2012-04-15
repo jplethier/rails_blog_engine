@@ -2,7 +2,7 @@
 
 .rails_blog_engine {
 
-  .rails_blog_engine_comment.show {
+  .rails_blog_engine_blog_comment.show {
     border: 1px solid lightgrey;
     padding: $box_padding $box_padding
              ($box_padding - $blank_line_height) $box_padding;
@@ -18,14 +18,14 @@
       margin-top: 0;
       font-weight: normal;
 
-      a.comment-link {
+      a.blog_comment-link {
         color: inherit;
         &:link, &:visited { text-decoration: none; }
         &:hover, &:active { text-decoration: underline; }
       }
     }
 
-    >.comment-tools {
+    >.blog_comment-tools {
       float: right;
       margin: 0 0 $blank_line_height $blank_line_height;
     }
